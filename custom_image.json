@@ -65,8 +65,10 @@
 
             {
                 "type": "Shell",
-                "name": "RunScriptFromSource",
-                "scriptUri": "https://raw.githubusercontent.com/rsajwani/custom-image/main/init_config.sh"
+                "name": "runConfigSetup",
+                "inline": [
+                    "sudo /bin/bash /buildInitConfig/init_config.sh"
+                ]
             },
             
             {
