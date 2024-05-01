@@ -25,8 +25,8 @@ enable_hugepages() {
     echo "---------------------------------------" >> "$LOG_FILE"
     
     # Enable hugepages
-    #sudo bash -c "echo 'always' > /sys/kernel/mm/transparent_hugepage/enabled" >> "$LOG_FILE" 2>&1
-    #sudo bash -c "echo 'always' > /sys/kernel/mm/transparent_hugepage/defrag" >> "$LOG_FILE" 2>&1
+    sudo bash -c "echo 'always' > /sys/kernel/mm/transparent_hugepage/enabled" >> "$LOG_FILE" 2>&1
+    sudo bash -c "echo 'always' > /sys/kernel/mm/transparent_hugepage/defrag" >> "$LOG_FILE" 2>&1
     
     # Print modified values
     echo "Modified values:" >> "$LOG_FILE"
