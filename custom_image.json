@@ -6,14 +6,14 @@
     "tags": {
         "imagebuilderTemplate": "AzureImageBuilderSIG",
         "userIdentity": "enabled"
-            },
+        },
         "identity": {
             "type": "UserAssigned",
                     "userAssignedIdentities": {
                     "<imgBuilderId>": {}
                         
                 }
-                },
+        },
     
     "properties": {
 
@@ -46,7 +46,23 @@
                 "scriptUri": "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh",
                 "sha256Checksum": "ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93"
             },
-            
+
+            {
+                "type": "File",
+                "name": "DownloadInitConfig",
+                "sourceUri": "https://raw.githubusercontent.com/rsajwani/custom-image/main/init_config.sh",
+                "destination":"/tmp/init_config.sh"
+            },
+
+            {
+                "type": "Shell",
+                "name": "setupBuildInitPath",
+                "inline": [
+                    "sudo mkdir /buildInitConfig",
+                    "sudo cp /tmp/init_config.sh /buildInitConfig/init_config.sh"
+                ]
+            },
+
             {
                 "type": "Shell",
                 "name": "RunScriptFromSource",
