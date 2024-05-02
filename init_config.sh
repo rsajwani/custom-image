@@ -35,6 +35,11 @@ enable_hugepages() {
     echo "---------------------------------------" >> "$LOG_FILE"
 }
 
+echo "apt update ..." >> "$LOG_FILE"
+sudo apt update
+echo "apt update hwloc" >> "$LOG_FILE"
+sudo apt install -y hwloc
+
 
 # Your script commands go here
 # For demonstration purposes, let's run ethtool for eth0 and eth1
