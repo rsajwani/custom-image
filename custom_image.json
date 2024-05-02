@@ -21,7 +21,7 @@
 
         "vmProfile": 
             {
-            "vmSize": "Standard_DS2_v2",
+            "vmSize": "Standard_L16s_v3",
             "osDiskSizeGB": 30
             },
         
@@ -57,14 +57,6 @@
             },
 
             {
-                "type": "Shell",
-                "name": "runConfigSetup",
-                "inline": [
-                    "sudo /bin/bash /buildInitConfig/init_config.sh"
-                ]
-            },
-            
-            {
                 "type": "File",
                 "name": "downloadBuildArtifacts",
                 "sourceUri": "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html",
@@ -85,6 +77,23 @@
                 "name": "InstallUpgrades",
                 "inline": [
                     "sudo apt install unattended-upgrades"
+                ]
+            },
+
+            {
+                "type": "Shell",
+                "name": "RunInitConfig",
+                "inline": [
+                    "sudo chmod +x /buildInitConfig/init_config.sh",
+                    "sudo /buildInitConfig/init_config.sh"
+                ]
+            },
+
+            {
+                "type": "Shell",
+                "name": "RestartMachine",
+                "inline": [
+                    "sudo shutdown -r now"
                 ]
             }
         ],
